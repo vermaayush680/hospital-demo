@@ -64,6 +64,81 @@ const registerStudent = async (event) => {
   return false;
 };
 
+const getSchools = async () => {
+
+  let { cookie, subTenant } = checkAuth();
+
+  const apiUrl = `${baseUrl}/api/school`;
+
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + cookie,
+      Subtenant: subTenant,
+    },
+  };
+
+  let response = await fetch(apiUrl, requestOptions);
+  let responseData = await response.json();
+  if (!response.ok) {
+    alert(responseData.message);
+  } else {
+    responseData = responseData.data;
+    let selectTag = document.getElementById('schoolName');
+    responseData.forEach(data => {
+
+      var opt = document.createElement("option");
+      opt.value= data.id;
+      opt.innerHTML = data.name; // whatever property it has
+      selectTag.appendChild(opt);
+    });
+  }
+  //   }
+  return false;
+};
+
+const getStudents = async () => {
+
+  let { cookie, subTenant } = checkAuth();
+
+  let apiUrl = `${baseUrl}/api/student`;
+
+  const schoolId = document.getElementById('schoolName').value;
+  if(schoolId) apiUrl += `?schoolId=${schoolId}`;
+
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + cookie,
+      Subtenant: subTenant,
+    },
+  };
+
+  let response = await fetch(apiUrl, requestOptions);
+  let responseData = await response.json();
+  if (!response.ok) {
+    alert(responseData.message);
+  } else {
+    responseData = responseData.data;
+    let selectTag = document.getElementById('studentName');
+    selectTag.innerHTML = '';
+    responseData.forEach(data => {
+
+      var opt = document.createElement("option");
+      opt.value= data.id;
+      opt.innerHTML = data.name; // whatever property it has
+      selectTag.appendChild(opt);
+    });
+  }
+  //   }
+  return false;
+};
+
+
+getSchools();
+
 
 const getStudentData = async () => {
 
@@ -102,16 +177,17 @@ const getStudentData = async () => {
                   </ul>
                 </div>
               </td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Birth'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Birth'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['Birth'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['Birth'].remarks || ""}"><br><br>
               </td>
               
               
@@ -129,16 +205,17 @@ const getStudentData = async () => {
                   <li>Rota Virus 1</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Weeks'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Weeks'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['6 Weeks'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['6 Weeks'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-secondary">
@@ -153,16 +230,17 @@ const getStudentData = async () => {
                   <li>Rota Virus 2</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['10 Weeks'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['10 Weeks'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['10 Weeks'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['10 Weeks'].remarks || ""}"><br><br>
               </td>
 
             </tr>
@@ -178,16 +256,17 @@ const getStudentData = async () => {
                   <li>Rota Virus 3</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['14 Weeks'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['14 Weeks'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['14 Weeks'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['14 Weeks'].remarks || ""}"><br><br>
               </td>
 
             </tr>
@@ -200,16 +279,17 @@ const getStudentData = async () => {
                   
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['6 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['6 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-warning">
@@ -220,16 +300,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['7 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['7 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['7 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['7 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-info">
@@ -240,16 +321,17 @@ const getStudentData = async () => {
                   <li>MCV 1 </li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['9 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['9 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['9 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['9 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-light">
@@ -261,17 +343,17 @@ const getStudentData = async () => {
                   <li>MCV 2</li>
                 </ul>
               </div></td>
-              <td>01/01/2021</td>
-
+               <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['12 Months'].due_date || ""}" disabled></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['12 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
+                ${responseData['12 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                  
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['12 Months'].remarks || ""}"><br><br>
               </td> 
             </tr>
             <tr class="table-dark">
@@ -283,16 +365,17 @@ const getStudentData = async () => {
                   <li>Varicella 1</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['15 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['15 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['15 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['15 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-primary">
@@ -304,16 +387,17 @@ const getStudentData = async () => {
                   <li>IPV B1</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['16-18 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['16-18 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['16-18 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['16-18 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-warning">
@@ -324,17 +408,17 @@ const getStudentData = async () => {
                   <li>Hep A2</li>
                 </ul>
               </div></td>
-              <td>01/01/2021</td>
-
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['18-24 Months'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['18-24 Months'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
+                ${responseData['18-24 Months'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                  
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['18-24 Months'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-success">
@@ -347,19 +431,17 @@ const getStudentData = async () => {
                   </li>
                 </ul>
               </div></td>
-              <td>01/01/2021</td>
-
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['2 Years'].due_date || ""}" disabled></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['2 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['2 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['2 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-light">
@@ -370,16 +452,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['3 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['3 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['3 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['3 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             
@@ -391,16 +474,17 @@ const getStudentData = async () => {
                  
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['4 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['4 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['4 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['4 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-light">
@@ -413,19 +497,17 @@ const getStudentData = async () => {
                   <li>MMR 3</li>
                 </ul>
               </div></td>
-              <td>01/01/2021</td>
-
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['4-6 Years'].due_date || ""}" disabled></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['4-6 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['4-6 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['4-6 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-success">
@@ -435,16 +517,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['5 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['5 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['5 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['5 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-warning">
@@ -455,16 +538,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['6 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['6 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['6 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-danger">
@@ -474,16 +558,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['7 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['7 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['7 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['7 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-primary">
@@ -493,16 +578,17 @@ const getStudentData = async () => {
                   <li>Influenza Vaccine</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['8 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['8 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['8 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['8 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-success">
@@ -515,16 +601,17 @@ const getStudentData = async () => {
                   
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['9-14 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['9-14 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['9-14 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['9-14 Years'].remarks || ""}"><br><br>
               </td>
             </tr>
             <tr class="table-dark">
@@ -536,16 +623,17 @@ const getStudentData = async () => {
                   <li>HPV 3</li>
                 </ul>
               </div></td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Rabies'].given_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['15-18 Years'].due_date || ""}" disabled></td>
+              <td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['15-18 Years'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
-                ${responseData['Rabies'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
+                ${responseData['15-18 Years'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}
                   
                 </select>
                 </div></td>
-              <td>  <input type="text" id="fname" name="fname" value="${responseData['Rabies'].remarks || ""}"><br><br>
+              <td>  <input type="text" id="fname" name="fname" value="${responseData['15-18 Years'].remarks || ""}"><br><br>
               </td>
             </tr>`;
 
@@ -588,7 +676,7 @@ const getStudentData = async () => {
               <td>
                 <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Cholera'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Cholera'].due_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Cholera'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
                 ${responseData['Cholera'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}       
@@ -611,7 +699,7 @@ const getStudentData = async () => {
               <td>
                 <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['JE'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['JE'].due_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['JE'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
                 ${responseData['JE'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}       
@@ -634,7 +722,7 @@ const getStudentData = async () => {
               <td>
                 <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Yellow Fever'].due_date || ""}"></td>
               <td>
-                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Yellow Fever'].due_date || ""}"></td>
+                <input type="date" class="form-control" id="birthday" name="birthday" value="${responseData['Yellow Fever'].given_date || ""}"></td>
               <td> <div class="card-body">
                 <select name="cars" id="cars">
                 ${responseData['Yellow Fever'].status == 0?'<option value="0">Complete</option><option value="0" selected="true">Incomplete</option>':'<option value="1" selected="true">Complete</option><option value="0">Incomplete</option>'}       
@@ -651,7 +739,6 @@ const getStudentData = async () => {
   return false;
 };
 
-getStudentData();
 
 // let searchText = document.getElementById('searchText');
 // searchText.addEventListener('input', (input) => {

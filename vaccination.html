@@ -155,29 +155,18 @@
               <h5 class="card-title">Student Vaccination Form</h5>
 
               <!-- Floating Labels Form -->
-              <form class="row g-3">
+              <form class="row g-3" onSubmit="getStudentData(); return false;">
                 <div class="col-md-12">
-                  <div class="form-floating">
-                    <!--<input type="text" class="form-control" id="floatingName" placeholder="Your Name">
-                    <label for="floatingName">Student Name</label>-->
-               
-                      <select name="cars" id="cars">
-                        <option value="Complete">Student Name 1</option>
-                        <option value="Incomplete">Student Name 2</option>
-                      </select>
-                    </div>
+                  <label for="schoolName">School Name:</label>
+                  <select name="schoolName" id="schoolName" onchange="getStudents()" required>
+                    <option value="">Select School Name</option>
+                  </select>
                  
                 </div>
                 <div class="col-md-12">
-                  <div class="form-floating">
-                    <!--<input type="text" class="form-control" id="floatingName" placeholder="Your Name">
-                    <label for="floatingName">Student Name</label>-->
-               
-                      <select name="cars" id="cars">
-                        <option value="Complete">School Name 1</option>
-                        <option value="Incomplete">School Name 2</option>
-                      </select>
-                    </div>
+                  <label for="studentName">Student Name:</label>
+                  <select name="studentName" id="studentName" required>
+                  </select>
                  
                 </div>
                 <div class="text-center">
