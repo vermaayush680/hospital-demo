@@ -39,8 +39,6 @@
 </head>
 
 <body>
-
-
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -52,74 +50,19 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-       
-
-        
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Dr A.K. Mishra</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" id="adminName"></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
             <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="#" onclick="logoutUser();">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -171,7 +114,7 @@
 	  
 	    <li class="nav-item">
         <a class="nav-link collapsed"  href="bmicalc.html">
-          <i class=" bi bi-calculator"></i><span>BMI Calculator</span>
+          <i class=" bi bi-eyedropper"></i><span>BMI Calculator</span>
         </a>
       </li><!-- End Components Nav -->
 
@@ -186,32 +129,6 @@
           <i class=" bi bi-search"></i><span>Search Data</span>
         </a>
       </li><!-- End Components Nav -->
-
-
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
 
     </ul>
 
@@ -230,7 +147,7 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
+    <!-- <section class="section">
       <div class="row">
         <div class="col-lg-6">
 
@@ -238,7 +155,6 @@
             <div class="card-body">
               <h5 class="card-title">Find School Details</h5>
 
-              <!-- Browser Default Validation -->
               <form class="row g-3">
                 <div class="col-md-6">
                   <label for="validationDefault03" class="form-label">School Name</label>
@@ -248,7 +164,6 @@
                   <button class="btn btn-primary" type="submit">Search&nbsp;&nbsp;<i class="bi bi-search"></i></button>
                 </div>
               </form>
-              <!-- End Browser Default Validation -->
 
             </div>
           </div>
@@ -260,7 +175,6 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Find School Details 2</h5>
-              <!-- Custom Styled Validation -->
               <form class="row g-3 needs-validation" novalidate>
                 
                 <div class="col-md-6">
@@ -274,14 +188,14 @@
                 <div class="col-12">
                   <button class="btn btn-primary" type="submit">Search&nbsp;&nbsp;<i class="bi bi-search"></i></button>
                 </div>
-              </form><!-- End Custom Styled Validation -->
+              </form>
 
             </div>
           </div>
 
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="section">
       
@@ -294,13 +208,9 @@
           <form class="row g-3">
             <div class="col-md-12">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingName" placeholder="Your Name">
-                <label for="floatingName">Enter Student Name / Student Code</label>
+                <input type="text" class="form-control" id="searchText" placeholder="Your Name">
+                <label for="searchText">Enter Student Name / Student Code</label>
               </div>
-            </div>
-            <div class="text-center">
-              <button class="btn btn-primary" type="submit">Search&nbsp;&nbsp;<i class="bi bi-search"></i></button>
-             
             </div>
           </form><!-- End floating Labels Form -->
 
@@ -310,13 +220,22 @@
     </div>
   </div>
 </section>
-
+<table class="table d-none" id="fetch-details">
+  <thead>
+    <tr>
+      <th scope="col">Student Name</th>
+      <th scope="col">Student Code</th>
+      <th scope="col">School Name</th>
+      <th scope="col">School Code</th>
+      <th scope="col">Docs</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody id="fetchDetails">
+  </tbody>
+</table>
   </main><!-- End #main -->
 
-  <div class="col-auto">
-    <label class="sr-only" for="inlineFormInput">Name</label>
-    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
-  </div>
   
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -346,6 +265,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="./assets/customjs/logout.js"></script>
+  <script src="./assets/customjs/fetch-details.js"></script>
 
 </body>
 

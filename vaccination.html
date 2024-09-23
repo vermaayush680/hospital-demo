@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Forms / Layouts - NiceAdmin Bootstrap Template</title>
+  <title>Vaccination Info - Nelson Hospital</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -41,8 +41,6 @@
 <body>
 
   <!-- ======= Header ======= -->
-
-  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -53,74 +51,19 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-       
-
-        
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Dr A.K. Mishra</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" id="adminName"></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
             <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="#" onclick="logoutUser();">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -172,7 +115,7 @@
 	  
 	    <li class="nav-item">
         <a class="nav-link collapsed"  href="bmicalc.html">
-          <i class=" bi bi-calculator"></i><span>BMI Calculator</span>
+          <i class=" bi bi-eyedropper"></i><span>BMI Calculator</span>
         </a>
       </li><!-- End Components Nav -->
 
@@ -187,32 +130,6 @@
           <i class=" bi bi-search"></i><span>Search Data</span>
         </a>
       </li><!-- End Components Nav -->
-
-
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
 
     </ul>
 
@@ -263,35 +180,6 @@
                     </div>
                  
                 </div>
-                <div class="col-md-12">
-                  <h5>Sex</h5>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Male</label>
-                  </div>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Female</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Student Phone">
-                    <label for="floatingEmail">Student Phone</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Your Email">
-                    <label for="floatingEmail">Student Code</label>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-floating">
-                    <input type="date" class="form-control" id="birthday" name="birthday">
-                    <label for="floatingName">Date Of Birth</label>
-                  </div>
-                </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
@@ -305,7 +193,7 @@
       </div>
     </section>
 
-    <div class="card">
+    <div class="card d-none" id="vaccination-data">
       <div class="card-body">
         <h5 class="card-title">Student Data</h5>
                 <!-- Table Variants -->
@@ -320,475 +208,7 @@
               <th scope="col">CatchUp</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Birth</th>
-              <td>
-                <div class="card-body">
-                  <ul>
-                    <li>BCG</li>
-                    <li>Hep B1 </li>
-                    <li>OPV 0</li>
-                  </ul>
-                </div>
-              </td>
-              <td>01/12/2025</td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-              
-              
-            </tr>
-
-            <tr class="table-primary">
-              <th scope="row">6 Weeks</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>DTaP/DTwP 1</li>
-                  <li>Hib 1 </li>
-                  <li>IPV 1</li>
-                  <li>Hep B2</li>
-                  <li>PCV 1</li>
-                  <li>Rota Virus 1</li>
-                </ul>
-              </div></td>
-              <td>01/12/2025</td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-secondary">
-              <th scope="row">10 Weeks</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>DTaP/DTwP 2</li>
-                  <li>Hib 2 </li>
-                  <li>IPV 2</li>
-                  <li>Hep B3</li>
-                  <li>PCV 2</li>
-                  <li>Rota Virus 2</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-              
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-
-            </tr>
-            <tr class="table-success">
-              <th scope="row">14 Weeks</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>DTaP/DTwP 3</li>
-                  <li>Hib 3 </li>
-                  <li>IPV 3</li>
-                  <li>Hep B4</li>
-                  <li>PCV 3</li>
-                  <li>Rota Virus 3</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-
-            </tr>
-            <tr class="table-danger">
-              <th scope="row">6 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>TCV</li>
-                  <li>Influenza vaccine </li>
-                  
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-warning">
-              <th scope="row">7 Months</th>
-              <td><div class="card-body">
-                <ul>
-                 
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-info">
-              <th scope="row">9 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>MMR 1</li>
-                  <li>MCV 1 </li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-light">
-              <th scope="row">12 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  
-                  <li>HepA 1</li>
-                  <li>MCV 2</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td> 
-            </tr>
-            <tr class="table-dark">
-              <th scope="row">15 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>PCV B1</li>
-                  <li>MMR 2</li>
-                  <li>Varicella 1</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-primary">
-              <th scope="row">16-18 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>DTaP/DTwP  B1</li>
-                  <li>Hib B1 </li>
-                  <li>IPV B1</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-warning">
-              <th scope="row">18-24 Months</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Varicella 2</li>
-                  <li>Hep A2</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-success">
-              <th scope="row">2 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  
-                  <li>Influenza vaccine</li>
-                  <li>MCV
-                  </li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-light">
-              <th scope="row">3 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            
-            <tr class="table-danger">
-              <th scope="row">4 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Influenza Vaccine</li>
-                 
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-light">
-              <th scope="row">4-6 Years</th>
-              <td><div class="card-body">
-                <ul>
-                 
-                  <li>IPV B2</li>
-                  <li>DTaP/DTwP B2</li>
-                  <li>MMR 3</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-success">
-              <th scope="row">5 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-warning">
-              <th scope="row">6 Years</th>
-              <td><div class="card-body">
-                <ul>
-                
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-danger">
-              <th scope="row">7 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-primary">
-              <th scope="row">8 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Influenza Vaccine</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-success">
-              <th scope="row">9-14 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>Tdap/Td</li>
-                  <li>HPV 1 </li>
-                  <li>HPV 2</li>
-                  
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
-            <tr class="table-dark">
-              <th scope="row">15-18 Years</th>
-              <td><div class="card-body">
-                <ul>
-                  <li>HPV 1</li>
-                  <li>HPV 2</li>
-                  <li>HPV 3</li>
-                </ul>
-              </div></td>
-              <td>01/01/2021</td>
-
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>
-            </tr>
+          <tbody id="vaccinationData">
           </tbody>
         </table>
         <!-- End Table Variants -->
@@ -799,7 +219,7 @@
 
 
 
-    <div class="card">
+    <div class="card d-none" id="vaccination-other-data">
       <div class="card-body">
         <h5 class="card-title">Other Vaccines</h5>
                 <!-- Table Variants -->
@@ -814,102 +234,7 @@
               <th scope="col">CatchUp</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Rabies</th>
-              <td>
-                <div class="card-body">
-                  <ul>
-                    
-                    <li>Single Dose</li>
-                  </ul>
-                </div>
-              </td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>  
-            </tr>
-
-            <tr>
-              <th scope="row">Cholera</th>
-              <td>
-                <div class="card-body">
-                  <ul>
-                    <li>Dose 1</li>
-                    <li>Dose 2</li>
-                  </ul>
-                </div>
-              </td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>  
-            </tr>
-
-            <tr>
-              <th scope="row">JE</th>
-              <td>
-                <div class="card-body">
-                  <ul>
-                    <li>Dose 1</li>
-                    <li>Dose 2</li>
-                  </ul>
-                </div>
-              </td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>  
-            </tr>
-           
-            <tr>
-              <th scope="row">Yellow Fever</th>
-              <td>
-                <div class="card-body">
-                  <ul>
-                   
-                    <li>Single Dose</li>
-                  </ul>
-                </div>
-              </td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td><form action="/action_page.php">
-                <input type="date" class="form-control" id="birthday" name="birthday"></form></td>
-              <td> <div class="card-body">
-                <select name="cars" id="cars">
-                  <option value="Complete">Complete</option>
-                  <option value="Incomplete">Incomplete</option>
-                </select>
-                </div></td>
-              <td>  <input type="text" id="fname" name="fname"><br><br>
-              </td>  
-            </tr>
+          <tbody id="vaccinationOtherData">
 
           </tbody>
         </table>
@@ -918,79 +243,7 @@
       </div>
     </div>
 
-    
-
-    <section class="section">
-      <div class="row">
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">O To 18 Years - Combined height and weight charts</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="min-height: 400px;" class="echart"></div>
-    
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#lineChart")).setOption({
-                    xAxis: {
-                      type: 'category',
-                      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                    },
-                    yAxis: {
-                      type: 'value'
-                    },
-                    series: [{
-                      data: [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,125,130,135,140,145,150,155,160,165,170,175,180,185,190,195,200],
-                      type: 'line',
-                      smooth: true
-                    }]
-                  });
-                });
-              </script>
-              <!-- End Line Chart -->
-            </div>
-          </div>
-        </div>
-    
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">5 to 18 Years : IAP Body Mass Index Charts</h5>
-              <!-- Area Chart -->
-              <div id="areaChart" style="min-height: 400px;" class="echart"></div>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#areaChart")).setOption({
-                    xAxis: {
-                      type: 'category',
-                      boundaryGap: false,
-                      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                    },
-                    yAxis: {
-                      type: 'value'
-                    },
-                    series: [{
-                      data: [820, 932, 901, 934, 1290, 1330, 1320],
-                      type: 'line',
-                      smooth: true,
-                      areaStyle: {}
-                    }]
-                  });
-                });
-              </script>
-              <!-- End Area Chart -->
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>    
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
+    <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
@@ -1018,6 +271,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="./assets/customjs/logout.js"></script>
+  <script src="./assets/customjs/vaccination.js"></script>
 
 </body>
 
