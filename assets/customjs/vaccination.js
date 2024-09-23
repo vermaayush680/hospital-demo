@@ -143,8 +143,10 @@ getSchools();
 const getStudentData = async () => {
 
   let { cookie, subTenant } = checkAuth();
-  
-  let apiUrl = `${baseUrl}/api/vaccination-history`;
+
+  let studentId = document.getElementById('studentName').value;
+
+  let apiUrl = `${baseUrl}/api/vaccination-history?studentId=${studentId}`;
 
   // let search = document.getElementById('searchText').value;
   // if(search && search.length) apiUrl += `?search=${search}`;
@@ -164,7 +166,6 @@ const getStudentData = async () => {
     alert('Student Data Not Found');
   } else {
     responseData = responseData.data;
-    console.log(responseData);
     let tbody = document.getElementById("vaccinationData");
         tbody.innerHTML = `<tr>
               <th scope="row">Birth</th>
